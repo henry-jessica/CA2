@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <RadioButton Content="All" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Land" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Water" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Air" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
