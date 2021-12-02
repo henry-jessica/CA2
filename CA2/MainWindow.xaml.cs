@@ -24,5 +24,7 @@ namespace CA2
         {
             InitializeComponent();
         }
+
+     
     }
 }
