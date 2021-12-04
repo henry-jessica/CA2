@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,23 +6,51 @@ using System.Threading.Tasks;
 
 namespace CA2
 {
-    public enum TypeOfActivity { Air, Water, Land }
+    //enum
+    enum TypeOfActivity
+    {
+        Air,
+        Water,
+        Land
+    }
+
     class Activity : IComparable
     {
-        private string name;
-        private DateTime activityDate;
-        private decimal cost;
-        private string  description;
+        #region Properties
+        //properties 
+        public string Name { get; set; }
+        public DateTime ActivityDate { get; set; }
+        public decimal Cost { get; set; }
+        public string Description { get; set; }
+        public TypeOfActivity TypeOfActivity { get; set; }
 
-        public Activity()
+        #endregion
+        
+        //default Constructors
+        public Activity() { }
+
+        //contructor to get all atributes 
+        public Activity(string name, DateTime date, decimal cost, TypeOfActivity typeOfActivity, string description)
         {
-
+            this.Name = name;
+            this.ActivityDate = date;
+            this.Cost = cost;
+            this.Description = description;
+            TypeOfActivity = typeOfActivity;
         }
 
-        public int CompareTo(object obj)
+        //methods
+        public override string ToString()
         {
-            Activity that = (Activity)obj;
-            return this.activityDate.CompareTo(that.activityDate);
+            string shortDate = ActivityDate.ToShortDateString();
+            return $"{Name} - {shortDate}";
+        }
+
+        //compare Activity date with others Activety Date 
+        int IComparable.CompareTo(object o)
+        {
+            Activity that = (Activity)o;
+            return this.ActivityDate.CompareTo(that.ActivityDate);
         }
 
     }
