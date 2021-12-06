@@ -1,6 +1,6 @@
 # CA2
 # Activity Planner 
-### C# and WPF GUI
+ C# and WPF GUI
 
 ## 🚀 Getting Started
 
