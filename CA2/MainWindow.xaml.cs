@@ -227,11 +227,11 @@ namespace CA2
             else if (selectedActivitity == null)
             {
 
-                MessageBox.Show("That nothing has been selected, Most one activity be selec", " Test", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("That nothing has been selected, Most one activity be select", "Activity Planner", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
-                MessageBox.Show("Unkown Error", "Test", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unkown Error", "Activity Planner", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
