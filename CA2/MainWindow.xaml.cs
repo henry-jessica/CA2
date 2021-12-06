@@ -22,7 +22,14 @@ namespace CA2
     public partial class MainWindow : Window
     {
 
-       // ObservableCollection<Activity> activities;
+        //Lists
+        List<Activity> ActivitiesList = new List<Activity>();
+        List<Activity> ActivitiesSelected = new List<Activity>();
+        List<Activity> ActivitiesFiltered = new List<Activity>();
+
+
+        decimal totalCost = 0;
+
 
         public MainWindow()
         {
@@ -61,7 +68,7 @@ namespace CA2
                 Name = "Surfing",
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 65.90m,
-                TypeOfActivity = TypeOfActivity.Land,
+                TypeOfActivity = TypeOfActivity.Water,
                 Description = "Half day lakeland with island picnic."
 
             };
@@ -70,7 +77,7 @@ namespace CA2
                 Name = "Kayaking",
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 68.40m,
-                TypeOfActivity = TypeOfActivity.Land,
+                TypeOfActivity = TypeOfActivity.Water,
                 Description = "Half day lakeland with island picnic."
             };
             Activity w3 = new Activity
@@ -78,7 +85,7 @@ namespace CA2
                 Name = "Abseling",
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 40m,
-                TypeOfActivity = TypeOfActivity.Land,
+                TypeOfActivity = TypeOfActivity.Water,
                 Description = "Half day lakeland with island picnic."
             };
 
@@ -87,7 +94,7 @@ namespace CA2
                 Name = "Sailing",
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 65.90m,
-                TypeOfActivity = TypeOfActivity.Land,
+                TypeOfActivity = TypeOfActivity.Air,
                 Description = "Half day lakeland with island picnic."
 
             };
@@ -96,7 +103,7 @@ namespace CA2
                 Name = "Helicopter Tour",
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 65.90m,
-                TypeOfActivity = TypeOfActivity.Land,
+                TypeOfActivity = TypeOfActivity.Air,
                 Description = "Half day lakeland with island picnic."
 
             };
@@ -105,32 +112,199 @@ namespace CA2
                 Name = "Hang Gliding",
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 65.90m,
-                TypeOfActivity = TypeOfActivity.Land,
+                TypeOfActivity = TypeOfActivity.Air,
                 Description = "Half day lakeland with island picnic."
 
             };
 
-            //create a list 
-            List<Activity> activities = new List<Activity>();
-             //activities = new ObservableCollection<Activity>();
 
             //Add those to a list 
-            activities.Add(l1);
-            activities.Add(l2);
-            activities.Add(l3);
-            activities.Add(w1);
-            activities.Add(w2);
-            activities.Add(w3);
-            activities.Add(a1);
-            activities.Add(a2);
-            activities.Add(a3);
+            ActivitiesList.Add(l1);
+            ActivitiesList.Add(l2);
+            ActivitiesList.Add(l3);
+            ActivitiesList.Add(w1);
+            ActivitiesList.Add(w2);
+            ActivitiesList.Add(w3);
+            ActivitiesList.Add(a1);
+            ActivitiesList.Add(a2);
+            ActivitiesList.Add(a3);
 
             //Sort all activities based on the date
-            activities.Sort();
+            ActivitiesList.Sort();
 
             //Display to a listbox 
-            lbxActivities.ItemsSource = activities;
+            lbxActivities.ItemsSource = ActivitiesList;
 
         }
+
+        /// <summary>
+        /// Button Add Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+            Activity selectedActivitity = lbxActivities.SelectedItem as Activity;
+
+
+            if (selectedActivitity != null)
+            {
+                bool CheckDate = true;
+
+                for (int i = 0; i < ActivitiesSelected.Count; i++)
+                {
+                    if (selectedActivitity.ActivityDate == ActivitiesSelected[i].ActivityDate)
+                    {
+
+                        MessageBox.Show("Date conflict, you cannot select two activities on the same date", "Activity Planner", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        CheckDate = false;
+                    }
+
+
+                }
+                if (CheckDate == true)
+                {
+
+                    ActivitiesList.Remove(selectedActivitity);
+                    ActivitiesSelected.Add(selectedActivitity);
+
+                    totalCost = totalCost + selectedActivitity.Cost;
+                    tblkCostTotal.Text = totalCost.ToString("C");
+                }
+
+                RefreshScreen(); 
+            }
+            else if (selectedActivitity == null)
+            {
+
+                MessageBox.Show("No activity selected", "Activity Planner", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Unkown Error", "Activity Planner", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+
+        private void Lbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //This will get the selected item from the list 
+            Activity activitySelected = lbxActivities.SelectedItem as Activity;
+
+            //check if nothing was selected 
+            if (activitySelected != null)
+            {
+                tblkDescription.Text = activitySelected.Description;
+
+                //it will select the cost referent to activity Selected and convert it string inserting currency simbol 
+                tblkCost.Text = activitySelected.Cost.ToString("C");
+
+
+            }
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+
+            Activity selectedActivitity = lbxActivitiesSelected.SelectedItem as Activity;
+
+
+            if (selectedActivitity != null)
+            {
+
+                ActivitiesList.Add(selectedActivitity);
+                ActivitiesSelected.Remove(selectedActivitity);
+
+                totalCost = totalCost - selectedActivitity.Cost;
+                tblkCostTotal.Text = totalCost.ToString("C");
+
+                RefreshScreen();
+
+
+            }
+            else if (selectedActivitity == null)
+            {
+
+                MessageBox.Show("That nothing has been selected, Most one activity be selec", " Test", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Unkown Error", "Test", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// Radio-Buttoin RdAll is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdbAll_Click(object sender, RoutedEventArgs e)
+        {
+            ActivitiesFiltered.Clear();
+
+            if (rdbAll.IsChecked == true)
+            {
+                RefreshScreen(); 
+             
+            }
+            else if (rdbAir.IsChecked == true)
+            { 
+                //Disply in the list all Air
+                foreach (Activity activity in ActivitiesList)
+                {
+                    if (activity.TypeOfActivity == TypeOfActivity.Air)
+                    {
+                        ActivitiesFiltered.Add(activity);
+                        lbxActivities.ItemsSource = null;
+                        lbxActivities.ItemsSource = ActivitiesFiltered;
+                    }
+
+                }
+
+            }
+            else if (rdbWater.IsChecked == true)
+            {
+                //Disply in the list all Water 
+                foreach (Activity activity in ActivitiesList)
+                {
+                    if (activity.TypeOfActivity == TypeOfActivity.Water)
+                    {
+                        ActivitiesFiltered.Add(activity);
+                        lbxActivities.ItemsSource = null;
+                        lbxActivities.ItemsSource = ActivitiesFiltered;
+                    }
+
+                }
+
+            }
+            else if (rdbLand.IsChecked == true)
+            {
+                //Disply in the list all Land 
+                foreach (Activity activity in ActivitiesList)
+                {
+                    if (activity.TypeOfActivity == TypeOfActivity.Land)
+                    {
+                        ActivitiesFiltered.Add(activity);
+                        lbxActivities.ItemsSource = null;
+                        lbxActivities.ItemsSource = ActivitiesFiltered;
+                    }
+
+                }
+
+            }
+        }
+        private void RefreshScreen()
+        {
+            lbxActivities.ItemsSource = null;
+            lbxActivities.ItemsSource = ActivitiesList;
+
+            lbxActivitiesSelected.ItemsSource = null;
+            lbxActivitiesSelected.ItemsSource = ActivitiesSelected;
+        }
+
+
     }
 }
