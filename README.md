@@ -1,4 +1,3 @@
-# CA2
 # Activity Planner 
  C# and WPF GUI
 
