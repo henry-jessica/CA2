@@ -38,7 +38,7 @@ TypeOfActivity: ActivityType.   Use an enum called ActivityType with three prope
 
 ## Authors
 
-* **Jessica Henry** - *Bachelor of Science (Honours) in Software Development - 1 Semester 2nd Year* - [GitHub](https://github.com/henry-jessica)
+* **Jessica Henry** - *Bachelor of Science (Honours) in Software Development - 1st Semester 2nd Year* - [GitHub](https://github.com/henry-jessica)
 
 
 * This subject was advised by **Keith McManus** -  *IT SLigo Lecturer* - [Keith GitHub](https://github.com/keithmcmanus)  
