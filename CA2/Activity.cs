@@ -36,7 +36,7 @@ namespace CA2
             this.ActivityDate = date;
             this.Cost = cost;
             this.Description = description;
-            TypeOfActivity = typeOfActivity;
+            this.TypeOfActivity = typeOfActivity;
         }
 
         //methods
@@ -50,6 +50,7 @@ namespace CA2
         int IComparable.CompareTo(object o)
         {
             Activity that = (Activity)o;
+
             return this.ActivityDate.CompareTo(that.ActivityDate);
         }
 

@@ -40,7 +40,7 @@ namespace CA2
             Activity l1 = new Activity
             {
                 Name = "Treking",
-                ActivityDate = new DateTime(2021, 06, 01),
+                ActivityDate = new DateTime(2021, 06, 03),
                 Cost = 40.00m,
                 TypeOfActivity = TypeOfActivity.Land,
                 Description = "Half day lakeland with island picnic."
@@ -52,7 +52,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 02),
                 Cost = 45.00m,
                 TypeOfActivity = TypeOfActivity.Land,
-                Description = "The vigorous demands of mountain biking stimulate your body to release natural endorphins, which are the body’s way of feeling good and getting more energy - Bike rental is included in the price."
+                Description = "The vigorous demands of mountain biking stimulate your body to release natural endorphins, all equipaments are included."
             };
             Activity l3 = new Activity
             {
@@ -75,15 +75,15 @@ namespace CA2
             Activity w2 = new Activity
             {
                 Name = "Kayaking",
-                ActivityDate = new DateTime(2021, 06, 01),
+                ActivityDate = new DateTime(2021, 06, 02),
                 Cost = 68.40m,
                 TypeOfActivity = TypeOfActivity.Water,
-                Description = "Half day lakeland with island picnic."
+                Description = "Experience along the visually styunning southern coastline of Ireland"
             };
             Activity w3 = new Activity
             {
                 Name = "Abseling",
-                ActivityDate = new DateTime(2021, 06, 01),
+                ActivityDate = new DateTime(2021, 06, 03),
                 Cost = 40m,
                 TypeOfActivity = TypeOfActivity.Water,
                 Description = "Half day lakeland with island picnic."
@@ -101,7 +101,7 @@ namespace CA2
             Activity a2 = new Activity
             {
                 Name = "Helicopter Tour",
-                ActivityDate = new DateTime(2021, 06, 01),
+                ActivityDate = new DateTime(2021, 06, 02),
                 Cost = 65.90m,
                 TypeOfActivity = TypeOfActivity.Air,
                 Description = "Half day lakeland with island picnic."
@@ -110,7 +110,7 @@ namespace CA2
             Activity a3 = new Activity
             {
                 Name = "Hang Gliding",
-                ActivityDate = new DateTime(2021, 06, 01),
+                ActivityDate = new DateTime(2021, 06, 03),
                 Cost = 65.90m,
                 TypeOfActivity = TypeOfActivity.Air,
                 Description = "Half day lakeland with island picnic."
@@ -131,6 +131,7 @@ namespace CA2
 
             //Sort all activities based on the date
             ActivitiesList.Sort();
+    
 
             //Display to a listbox 
             lbxActivities.ItemsSource = ActivitiesList;
@@ -147,13 +148,14 @@ namespace CA2
 
             Activity selectedActivitity = lbxActivities.SelectedItem as Activity;
 
-
+            //check if is selected 
             if (selectedActivitity != null)
             {
                 bool CheckDate = true;
-
+                //loop through of element of the list 
                 for (int i = 0; i < ActivitiesSelected.Count; i++)
                 {
+                    //check date if is equal display message and return false 
                     if (selectedActivitity.ActivityDate == ActivitiesSelected[i].ActivityDate)
                     {
 
@@ -162,19 +164,25 @@ namespace CA2
                     }
 
 
-                }
+                } 
+                //check if date is different, so date is true will insert from list activities to 
+                // selected list
                 if (CheckDate == true)
-                {
-
+                { 
+                
                     ActivitiesList.Remove(selectedActivitity);
                     ActivitiesSelected.Add(selectedActivitity);
 
                     totalCost = totalCost + selectedActivitity.Cost;
                     tblkCostTotal.Text = totalCost.ToString("C");
-                }
 
+
+                    ActivitiesSelected.Sort();
+                }
+                //update the list 
                 RefreshScreen(); 
             }
+            //if did not select element from activity list display erro message 
             else if (selectedActivitity == null)
             {
 
@@ -210,7 +218,7 @@ namespace CA2
 
             Activity selectedActivitity = lbxActivitiesSelected.SelectedItem as Activity;
 
-
+            //check if element was selected remove from the list 
             if (selectedActivitity != null)
             {
 
@@ -220,10 +228,12 @@ namespace CA2
                 totalCost = totalCost - selectedActivitity.Cost;
                 tblkCostTotal.Text = totalCost.ToString("C");
 
+                //update list 
                 RefreshScreen();
 
 
             }
+            //if element was not selected display message when try to remove  
             else if (selectedActivitity == null)
             {
 
@@ -235,18 +245,12 @@ namespace CA2
             }
         }
 
-
-        /// <summary>
-        /// Radio-Buttoin RdAll is selected
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void RdbAll_Click(object sender, RoutedEventArgs e)
         {
             ActivitiesFiltered.Clear();
 
             if (rdbAll.IsChecked == true)
-            {
+            {//Display all activities 
                 RefreshScreen(); 
              
             }
@@ -298,6 +302,7 @@ namespace CA2
         }
         private void RefreshScreen()
         {
+            //update screen
             lbxActivities.ItemsSource = null;
             lbxActivities.ItemsSource = ActivitiesList;
 
@@ -305,6 +310,6 @@ namespace CA2
             lbxActivitiesSelected.ItemsSource = ActivitiesSelected;
         }
 
-
+     
     }
 }
