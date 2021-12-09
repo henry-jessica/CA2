@@ -52,7 +52,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 02),
                 Cost = 45.00m,
                 TypeOfActivity = TypeOfActivity.Land,
-                Description = "The vigorous demands of mountain biking stimulate your body to release natural endorphins, all equipaments are included."
+                Description = "The vigorous demands of mountain biking stimulate your body."
             };
             Activity l3 = new Activity
             {
@@ -69,7 +69,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 65.90m,
                 TypeOfActivity = TypeOfActivity.Water,
-                Description = "Half day lakeland with island picnic."
+                Description = "Enjoy in StrandHill beach, very cold water."
 
             };
             Activity w2 = new Activity
@@ -86,7 +86,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 03),
                 Cost = 40m,
                 TypeOfActivity = TypeOfActivity.Water,
-                Description = "Half day lakeland with island picnic."
+                Description = "Experience with professional instructors."
             };
 
             Activity a1 = new Activity
@@ -95,7 +95,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 01),
                 Cost = 65.90m,
                 TypeOfActivity = TypeOfActivity.Air,
-                Description = "Half day lakeland with island picnic."
+                Description = "Enjoy 8 hours sailing in Atlantic Ocean"
 
             };
             Activity a2 = new Activity
@@ -104,7 +104,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 02),
                 Cost = 65.90m,
                 TypeOfActivity = TypeOfActivity.Air,
-                Description = "Half day lakeland with island picnic."
+                Description = "This is really fancy - 150km."
 
             };
             Activity a3 = new Activity
@@ -113,7 +113,7 @@ namespace CA2
                 ActivityDate = new DateTime(2021, 06, 03),
                 Cost = 65.90m,
                 TypeOfActivity = TypeOfActivity.Air,
-                Description = "Half day lakeland with island picnic."
+                Description = "Fantastic experience and very safe."
 
             };
 
@@ -208,6 +208,10 @@ namespace CA2
 
                 //it will select the cost referent to activity Selected and convert it string inserting currency simbol 
                 tblkCost.Text = activitySelected.Cost.ToString("C");
+
+                //it will display name in the card
+
+                tblkNameActivity.Text = activitySelected.Name; 
 
 
             }
@@ -310,6 +314,6 @@ namespace CA2
             lbxActivitiesSelected.ItemsSource = ActivitiesSelected;
         }
 
-     
+    
     }
 }
