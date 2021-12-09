@@ -14,13 +14,70 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         
+<<<<<<< Updated upstream
         Title="MainWindow">
     <Grid>
+=======
+        Title="MainWindow" Height="599.496" Width="1071.152">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.42"/>
+                <TranslateTransform X="-0.064" Y="0.052"/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+>>>>>>> Stashed changes
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+<<<<<<< Updated upstream
 
+=======
+        <RadioButton x:Name="rdbAll" Content="All" HorizontalAlignment="Left" Margin="63,169,0,0" VerticalAlignment="Top" Checked="RdbAll_Click" Grid.Column="1" Width="88" Height="18"/>
+        <RadioButton x:Name="rdbLand" Content="Land" HorizontalAlignment="Left" Margin="63,205,0,0" VerticalAlignment="Top" Checked="RdbAll_Click" Grid.Column="1" Width="88" Height="18"/>
+        <RadioButton x:Name="rdbWater" Content="Water" HorizontalAlignment="Left" Margin="63,237,0,0" VerticalAlignment="Top" Checked="RdbAll_Click" Grid.Column="1" Width="71" Height="18"/>
+        <RadioButton x:Name="rdbAir" Content="Air" HorizontalAlignment="Left" Margin="65,276,0,0" VerticalAlignment="Top" Checked="RdbAll_Click" Grid.Column="1" Width="71" Height="18"/>
+        <ListBox x:Name="lbxActivities"  BorderThickness="1" BorderBrush="#2c85a79e"  HorizontalAlignment="Left" Height="289" Margin="167,152,0,0" VerticalAlignment="Top" Width="204" SelectionChanged="Lbx_SelectionChanged" Grid.Column="1"/>
+
+        <ListBox x:Name="lbxActivitiesSelected"  BorderThickness="1" BorderBrush="#2c85a79e" HorizontalAlignment="Left" Height="289" Margin="752,152,0,0" VerticalAlignment="Top" Width="225" Grid.Column="1"/>
+        <Label Content="Total Cost" HorizontalAlignment="Left" Margin="752,480,0,0" VerticalAlignment="Top" RenderTransformOrigin="14.038,-13.048" Grid.Column="1" Width="91"/>
+        <TextBlock x:Name="tblkCostTotal" HorizontalAlignment="Left" Height="23" Margin="879,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.619,1.362" Grid.Column="1"/>
+        <Label Content="Activity Planner" HorizontalAlignment="Left" Margin="209,59,0,0" VerticalAlignment="Top" Grid.Column="1" Width="118"/>
+
+        <materialDesign:Card Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="399,155,0,0" VerticalAlignment="Top" Width="220" Height="286"/>
+        <Label Content="Activities" HorizontalAlignment="Left" Margin="232,124,0,0" VerticalAlignment="Top" Grid.Column="1" Width="66"/>
+        <Label Content="Selected Activities" HorizontalAlignment="Left" Margin="803,124,0,0" VerticalAlignment="Top" Grid.Column="1" Width="117"/>
+        <TextBlock x:Name="tblkDescription" HorizontalAlignment="Left" Height="82" Margin="401,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.062"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.124"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <materialDesign:PackIcon Kind="bike" Height="29" Width="26" Grid.Column="1" Margin="581,290,0,0" />
+        <Button Content="+" HorizontalAlignment="Left" Margin="551,410,0,0" VerticalAlignment="Top" Width="62" Click="BtnAdd_Click" Grid.Column="1" Height="25"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="758,411,0,0" VerticalAlignment="Top" Width="62" Click="BtnRemove_Click" Grid.Column="1" Height="25"/>
+        <TextBlock x:Name="tblkCost" HorizontalAlignment="Left" Height="23" Margin="408,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Grid.Column="1"/>
+        <TextBlock x:Name="tblkNameActivity" HorizontalAlignment="Left" Height="27" Margin="404,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.062"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.124"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+>>>>>>> Stashed changes
 
         <Grid>
             <Grid.RowDefinitions >
