@@ -35,7 +35,6 @@ Cost: decimal
 Description: string.  This uses a long hand property as it returns cost in addition to description.
 TypeOfActivity: ActivityType.   Use an enum called ActivityType with three properties Air, Water and Land
 
-
 ## Authors
 
 * **Jessica Henry** - *Bachelor of Science (Honours) in Software Development - 1st Semester 2nd Year* - [GitHub](https://github.com/henry-jessica)
